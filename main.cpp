@@ -31,6 +31,7 @@ int main()
     finish = (cards).end();
     std::random_shuffle(start, finish);
     // Split Cards equally between players
+    split(playerA_Card, playerB_Deck, cards);
 
     // Game Psuedo Code
     // Initiate Game (Loop which ends when a player runs out of cards)
