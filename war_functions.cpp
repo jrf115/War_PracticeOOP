@@ -67,8 +67,9 @@ bool compareDifference(Standard_card& aCard, Standard_card& bCard)
 }
 
 /** Gives a single card to specified player **/
-void giveCardToPlayer(Standard_card& otherPlayersCard, Deck& playerDeck)
+void giveCardToPlayer(Standard_card& playersCard, Standard_card& otherPlayersCard, Deck& playerDeck)
 {
+    playerDeck.push_back(playersCard);
     playerDeck.push_front(otherPlayersCard);
 }
 

@@ -72,11 +72,11 @@ int main()
             if (compareDifference(playerA_Card, playerB_Card))
             {
                 if (playerA_Card.rank < playerB_Card.rank){
-                    giveCardToPlayer(playerA_Card, playerB_Deck);
+                    giveCardToPlayer(playerA_Card, playerB_Card, playerB_Deck);
                     cout << "Player B wins player A's card. " << endl;
                 }
                 else{
-                    giveCardToPlayer(playerB_Card, playerA_Deck);
+                    giveCardToPlayer(playerA_Card, playerB_Card, playerA_Deck);
                     cout << "Player A wins player B's card. " << endl;
                 }
             }
@@ -100,7 +100,7 @@ int main()
         cumulativeTurns += numTurns;
         allTurns.push_back(numTurns);
         cout << "Number of turns played: " << numTurns
-        << endl << "------------------------------------\n";
+        << endl << "----------------------------------------------------------\n";
     }
 
     cout << "FINISHED: \nWith an average number of turns being: " << cumulativeTurns / 999.0 << endl;
