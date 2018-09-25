@@ -65,7 +65,6 @@ int main()
             playerA_Deck.pop_back();
             playerB_Card = playerB_Deck[playerB_Deck.size() - 1];
             playerB_Deck.pop_back();
-            cout << " Test ";
             cout << "Player A placed a " << playerA_Card.rank << " of " << playerA_Card.suit << endl;
             cout << "Player B placed a " << playerB_Card.rank << " of " << playerB_Card.suit << endl;
             cout << endl;

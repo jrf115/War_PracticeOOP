@@ -69,7 +69,7 @@ bool compareDifference(Standard_card& aCard, Standard_card& bCard)
 /** Gives a single card to specified player **/
 void giveCardToPlayer(Standard_card& playersCard, Standard_card& otherPlayersCard, Deck& playerDeck)
 {
-    playerDeck.push_back(playersCard);
+    playerDeck.push_front(playersCard);
     playerDeck.push_front(otherPlayersCard);
 }
 
@@ -97,13 +97,13 @@ void war(Deck& playerA_Deck, Deck& playerB_Deck)
         if (playerA_LastCard->suit > playerB_LastCard->suit)
         {
             cout << "Player A wins B's cards " << endl;
-            giveCardsToPlayer(playerA_Deck, playerB_PlayCards);
+            giveCardsToPlayer(playerA_Deck, playerA_PlayCards, playerB_PlayCards);
             return;
         }
         else if (playerB_LastCard->suit > playerA_LastCard->suit)
         {
             cout << "Player B wins A's cards " << endl;
-            giveCardsToPlayer(playerB_Deck, playerA_PlayCards);
+            giveCardsToPlayer(playerB_Deck, playerB_PlayCards, playerA_PlayCards);
             return;
         }
         else
@@ -111,14 +111,19 @@ void war(Deck& playerA_Deck, Deck& playerB_Deck)
     }
 }
 
-/** This function will give cards to a player's hand **/
-void giveCardsToPlayer(Deck& playerCards, Deck& temp)
+/** This function will give cards won from war to a player's hand **/
+void giveCardsToPlayer(Deck& playerCards, Deck& temp, Deck& temp2)
 {   //Deck temp are the cards to "push back"
-    Deck::iterator iter;
     while (!temp.empty())
     {
-        playerCards.push_front(temp[temp.size()]);
+        playerCards.push_front(temp[temp.size() - 1]);
         temp.pop_back();
+
     }
     temp.clear();
+    while (!temp2.empty())
+    {
+        playerCards.push_front(temp2[temp2.size() - 1]);
+        temp2.pop_back();
+    }
 }
